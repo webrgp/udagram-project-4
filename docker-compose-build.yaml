@@ -4,11 +4,11 @@ services:
     build:
       context: ./udagram-reverse-proxy
     image: rodpassos/udagram-reverse-proxy
-  api-users-svc:
+  backend_user:
     build:
       context: ./udagram-api-users
     image: rodpassos/udagram-api-users
-  api-feed-svc:
+  backend_feed:
     build:
       context: ./udagram-api-feed
     image: rodpassos/udagram-api-feed

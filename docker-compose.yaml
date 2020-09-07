@@ -6,9 +6,9 @@ services:
         - "8080:8080"
     restart: always
     depends_on:
-      - api-users-svc
-      - api-feed-svc
-  api-feed-svc:
+      - backend-feed
+      - backend-user
+  backend-feed:
     image: rodpassos/udagram-api-feed
     volumes:
       - $HOME/.aws:/root/.aws
@@ -21,8 +21,8 @@ services:
       AWS_PROFILE: $AWS_PROFILE
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      URL: $URL
-  api-users-svc:
+      URL: "http://localhost:8100"
+  backend-user:
     image: rodpassos/udagram-api-users
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
@@ -33,7 +33,7 @@ services:
       AWS_PROFILE: $AWS_PROFILE
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
-      URL: $URL
+      URL: "http://localhost:8100"
   frontend:
     image: rodpassos/udagram-frontend
     ports:
