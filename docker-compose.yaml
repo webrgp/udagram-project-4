@@ -1,15 +1,19 @@
 version: "3"
 services:
   reverseproxy:
-    image: rodpassos/udagram-reverse-proxy
+    # image: rodpassos/udagram-reverse-proxy
+    build:
+      context: ./udagram-reverse-proxy
     ports:
         - "8080:8080"
     restart: always
     depends_on:
-      - api-users-svc
       - api-feed-svc
+      - api-users-svc
   api-feed-svc:
-    image: rodpassos/udagram-api-feed
+    # image: rodpassos/udagram-api-feed
+    build:
+      context: ./udagram-api-feed
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
@@ -23,7 +27,9 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: $URL
   api-users-svc:
-    image: rodpassos/udagram-api-users
+    # image: rodpassos/udagram-api-users
+    build:
+      context: ./udagram-api-users
     environment:
       POSTGRES_USERNAME: $POSTGRES_USERNAME
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD

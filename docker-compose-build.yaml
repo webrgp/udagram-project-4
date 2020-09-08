@@ -3,15 +3,15 @@ services:
   reverseproxy:
     build:
       context: ./udagram-reverse-proxy
-    image: rodpassos/udagram-reverse-proxy
+    # image: rodpassos/udagram-reverse-proxy
   api-users-svc:
     build:
       context: ./udagram-api-users
-    image: rodpassos/udagram-api-users
+    # image: rodpassos/udagram-api-users
   api-feed-svc:
     build:
       context: ./udagram-api-feed
-    image: rodpassos/udagram-api-feed
+    # image: rodpassos/udagram-api-feed
   frontend:
     build:
       context: ./udagram-frontend
